@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<title>Hello! WebGL</title>
+		<script src="vector.js"></script>
+		<script src="matrix.js"></script>
+		<script src="model.js"></script>
+		<script src="engine.js"></script>
+		<script src="tmath.js"></script>
+		<script src="testgl.js"></script>
+		<script id="vs" type="x-shader/x-vertex">
+			uniform mat4 mTranslate;
+			attribute vec3 vs_iPos;
+			attribute vec4 vs_vColor;
+			varying vec4 fs_vColor;
+
+			void main() {
+				gl_Position = mTranslate * vec4(vs_iPos.xyz, 1);
+				fs_vColor = vs_vColor;
+			}
+		</script>
+		<script id="fs" type="x-shader/x-fragment">
+			precision mediump vec4;
+			varying vec4 fs_vColor;
+			void main() {
+				gl_FragColor = fs_vColor;
+			}
+		</script>
+	</head>
+	<body onload="WebGLStart();">
+		<canvas id="my-canvas" style="border: none;" width="320" height="240"></canvas>
+	</body>
+</html>
