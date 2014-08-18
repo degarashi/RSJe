@@ -11,10 +11,12 @@ function RSJE() {
 		try {
 			var canvas = document.getElementById("my-canvas");
 			self.gl = canvas.getContext("experimental-webgl");
+			if(!self.gl)
+				throw "cannot get webgl context";
 			self.width = canvas.width;
 			self.height = canvas.height;
 		} catch(e) {
-			throw "Could not initialize WebGL";
+			throw "Could not initialize WebGL(" + e + ")";
 		}
 	}
 	//! シェーダーを読み込んでコンパイル

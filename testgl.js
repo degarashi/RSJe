@@ -73,6 +73,7 @@ function WebGLStart() {
 			rsj.draw();
 		}, 16);
 	} catch(e) {
+		alert(e);
 		var canvas = document.getElementById("my-canvas");
 		var ctx = canvas.getContext("2d");
 		if(ctx) {
